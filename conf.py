@@ -2,6 +2,7 @@ class Config:
     def __init__(self):
         
         # Articial language (AL) lexicon settings
+        # (Normally you don't need to change any of these.)
         self.n_reps = 25    # No. repetitions of each word in each stream
         self.n_streams = 6  # No. AL streams needed
         self.al_lexicon = {
@@ -22,7 +23,12 @@ class Config:
         }
 
         # Pitch value settings
-        self.mu = 130  # Mean pitch for all words
+        # These settings control the pitch values of the AL words and their component syllables.
+        # For each AL word instance, sample a pitch value mu_w from a normal distribution with mean of 
+        # self.mu and standard deviation of self.sd. Then, for the syllables inside this word, 
+        # sample pitch values from a normal distribution with mean of mu_w and standard deviation of 
+        # self.sd_w.
+        self.mu = 130  # Mean pitch for all AL words (Hz)
         self.sd = 15   # Standard deviation for word pitch
         self.sd_w = 5  # Standard deviation for syllable pitch within a word
 
